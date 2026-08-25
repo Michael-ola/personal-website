@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Michael Olaitan Ibitoye — Control + AI + Embedded Systems + IoT",
+  title: "Michael Ibitoye",
   description:
     "Engineering portfolio focused on control systems, embedded systems, IoT, applied AI, electric drives, state estimation and autonomous perception.",
   openGraph: {
