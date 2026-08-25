@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiFileText } from "react-icons/fi";
@@ -19,9 +19,20 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-xl">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight text-[var(--text)]">
-          MI<span className="text-[var(--accent)]">.</span>
-        </Link>
+       <Link
+  href="/"
+  className="flex items-center"
+  aria-label="Michael Ibitoye - Home"
+>
+  <Image
+    src="/logo.png"
+    alt="Michael Ibitoye"
+    width={38}
+    height={38}
+    priority
+    className="rounded-lg"
+  />
+</Link>
 
         <nav className="hidden items-center gap-7 md:flex">
           {nav.map(([label, href]) => (
