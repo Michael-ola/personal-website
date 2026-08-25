@@ -1,26 +1,255 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  --bg: #08090d;
+  --surface: #0e1117;
+  --surface-2: #131821;
+  --diagram-bg: #0c1117;
+  --text: #f6f7f9;
+  --muted: #9ba2ad;
+  --muted-strong: #d2d6dc;
+  --subtle: #727b88;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --chip: rgba(255, 255, 255, 0.035);
+
+  --accent: #66e5ef;
+  --accent-strong: #a2f3f8;
+  --accent-soft: rgba(65, 211, 222, 0.10);
+  --accent-border: rgba(102, 229, 239, 0.25);
+  --accent-glow: rgba(102, 229, 239, 0.62);
+
+  --accent-2: #a78bfa;
+  --accent-3: #f59e0b;
+
+  --hero-orb-1: rgba(34, 211, 238, 0.085);
+  --hero-orb-2: rgba(139, 92, 246, 0.095);
+  --hero-orb-3: rgba(245, 158, 11, 0.045);
+  --portrait-halo:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(139, 92, 246, 0.12) 52%, rgba(245, 158, 11, 0.08));
+
+  --grid: rgba(255, 255, 255, 0.025);
+  --nav-bg: rgba(8, 9, 13, 0.84);
+  --floating-bg: rgba(14, 17, 23, 0.93);
+  --shadow: rgba(0, 0, 0, 0.44);
+
+  --primary-bg: #d6fbff;
+  --primary-text: #061013;
+  --primary-hover: #ffffff;
+
+  --section-gradient:
+    radial-gradient(circle at 0% 10%, rgba(34, 211, 238, 0.045), transparent 28rem),
+    radial-gradient(circle at 100% 80%, rgba(139, 92, 246, 0.045), transparent 26rem);
+
+  --contact-gradient:
+    radial-gradient(circle at 15% 0%, rgba(34, 211, 238, 0.10), transparent 24rem),
+    radial-gradient(circle at 92% 100%, rgba(139, 92, 246, 0.08), transparent 24rem);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.light {
+  color-scheme: light;
+
+  --bg: #f7f6f2;
+  --surface: #fffefa;
+  --surface-2: #eef7f7;
+  --diagram-bg: #f5faf9;
+  --text: #10161a;
+  --muted: #59666c;
+  --muted-strong: #334147;
+  --subtle: #7e8a90;
+
+  --border: rgba(23, 51, 56, 0.13);
+  --chip: rgba(5, 126, 136, 0.06);
+
+  --accent: #078792;
+  --accent-strong: #056d75;
+  --accent-soft: rgba(7, 135, 146, 0.10);
+  --accent-border: rgba(7, 135, 146, 0.26);
+  --accent-glow: rgba(7, 135, 146, 0.35);
+
+  --accent-2: #7c3aed;
+  --accent-3: #d97706;
+
+  --hero-orb-1: rgba(8, 145, 154, 0.14);
+  --hero-orb-2: rgba(124, 58, 237, 0.10);
+  --hero-orb-3: rgba(217, 119, 6, 0.085);
+  --portrait-halo:
+    linear-gradient(135deg, rgba(8, 145, 154, 0.18), rgba(124, 58, 237, 0.11) 52%, rgba(217, 119, 6, 0.12));
+
+  --grid: rgba(8, 102, 112, 0.055);
+  --nav-bg: rgba(251, 250, 246, 0.86);
+  --floating-bg: rgba(255, 254, 250, 0.93);
+  --shadow: rgba(34, 52, 55, 0.18);
+
+  --primary-bg: #087a83;
+  --primary-text: #ffffff;
+  --primary-hover: #06676f;
+
+  --section-gradient:
+    radial-gradient(circle at 0% 18%, rgba(8, 145, 154, 0.075), transparent 28rem),
+    radial-gradient(circle at 100% 85%, rgba(124, 58, 237, 0.055), transparent 26rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(238, 247, 247, 0.42));
+
+  --contact-gradient:
+    radial-gradient(circle at 10% 0%, rgba(8, 145, 154, 0.14), transparent 23rem),
+    radial-gradient(circle at 94% 100%, rgba(217, 119, 6, 0.10), transparent 22rem),
+    linear-gradient(135deg, #fffefa, #f4f9f8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% -8%, var(--hero-orb-1), transparent 34rem),
+    radial-gradient(circle at 88% 4%, var(--hero-orb-2), transparent 31rem),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-alt {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--section-gradient);
+}
+
+.hero-shell {
+  background:
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--surface) 18%, transparent) 100%);
+}
+
+.contact-panel {
+  background: var(--contact-gradient);
+}
+
+.technical-grid {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.6rem;
+  border-radius: 999px;
+  padding: 0.70rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: 180ms ease;
+}
+
+.primary-button {
+  background: var(--primary-bg);
+  color: var(--primary-text);
+  box-shadow: 0 10px 26px -18px var(--accent-glow);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  background: var(--primary-hover);
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--muted-strong);
+}
+
+.secondary-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+  color: var(--text);
+}
+
+.icon-button {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  color: var(--muted);
+  transition: 180ms ease;
+}
+
+.icon-button:hover {
+  border-color: var(--accent-border);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.project-card {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 98%, var(--accent-2) 2%), var(--surface));
+  box-shadow: 0 14px 34px -29px var(--shadow);
+  transition: 220ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -29px var(--shadow);
+}
+
+.theme-action-light {
+  display: none;
+}
+
+.theme-action-dark {
+  display: block;
+}
+
+.light .theme-action-light {
+  display: block;
+}
+
+.light .theme-action-dark {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
 }

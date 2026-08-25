@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Michael Olaitan Ibitoye — Engineering Portfolio V3
 
-## Getting Started
+A fresh parallel build using:
 
-First, run the development server:
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- next-themes
+- react-icons
+
+## Theme behavior
+
+- Device set to dark → dark theme
+- Device set to light → light theme
+- No resolvable preference → dark CSS fallback
+- Visitors can override the theme from the navbar
+
+## V3 changes
+
+- Larger "I am Michael Olaitan Ibitoye" introduction.
+- Wider hero headline and raised portrait retained.
+- More expressive light theme using teal, violet and warm amber accents.
+- Dark theme keeps the technical look with restrained cyan, violet and amber gradients.
+- Larger section eyebrow labels throughout the site.
+- Public-facing copy throughout; no internal portfolio-building commentary.
+- Homepage navbar links remain `/#...`, so navigation works from project pages.
+- Hero homepage navigation uses Next.js `<Link>`, fixing `no-html-link-for-pages`.
+- Theme toggle does not use `useEffect` / synchronous state updates.
+- GitHub and LinkedIn brand icons remain in `react-icons/fa6`; generic icons remain in `react-icons/fi`.
+- BrightNext Academy remains in Experience and Pendulum remains omitted.
+- Solar project uses real project images.
+- Agricultural stone-detection project uses the generated architecture visual.
+- Project pages retain the sticky case-study contents list.
+
+## Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data-driven structure
 
-## Learn More
+- `src/data/projects.ts`
+- `src/data/publications.ts`
+- `src/data/experience.ts`
+- `src/data/skills.ts`
+- `src/data/awards.ts`
+- `src/data/site.ts`
 
-To learn more about Next.js, take a look at the following resources:
+All project pages use:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/app/projects/[slug]/page.tsx
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Assets
 
-## Deploy on Vercel
+Place the original images beside `create-portfolio-v3.sh` before running it.
+The asset aliases from V2 are preserved.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## CV
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The CV button currently points to the supplied Google Drive CV. Update `src/data/site.ts` later if needed.
